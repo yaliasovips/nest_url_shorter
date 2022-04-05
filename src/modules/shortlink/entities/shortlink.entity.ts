@@ -9,7 +9,7 @@ export class ShortlinkEntity {
 
     @ApiProperty({
         example: {
-            url: 'http://localhost:3000/shortlink/SHORTLINK',
+            url: 'http://localhost.ru/SHORTLINK',
         },
         description: 'example of egotoken',
     })

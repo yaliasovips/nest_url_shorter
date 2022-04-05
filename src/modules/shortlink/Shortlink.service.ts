@@ -47,7 +47,7 @@ export class ShortlinkService {
                     },
                 });
 
-                res.error = 500;
+                res.error = 300;
                 return res;
             }
         } else {

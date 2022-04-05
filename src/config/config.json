@@ -22,7 +22,7 @@
   "riak": {
     "host": "10.1.100.189",
     "port": 8342,
-    "bucket": "sendlink",
+    "bucket": "shortlink",
     "secret": "somesecret"
   }
 }

@@ -22,13 +22,13 @@ async function NestUrlShorter() {
 
     //swagger
     const swaggerConfig = new DocumentBuilder()
-        .setTitle('send-link-backend')
-        .setDescription('send-link-backend API')
+        .setTitle('shortlink')
+        .setDescription('shortlink API')
         .setVersion('1.0')
-        .addTag('send-link-backend')
+        .addTag('shortlink')
         .build();
     const document = SwaggerModule.createDocument(app, swaggerConfig);
-    SwaggerModule.setup('*/docs', app, document);
+    SwaggerModule.setup('/docs', app, document);
 
     await app.listen(80);
 }
