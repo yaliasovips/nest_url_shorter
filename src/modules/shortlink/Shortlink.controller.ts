@@ -1,4 +1,4 @@
-import { Controller, Body, Post, Res, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Body, Post, Res, UsePipes, ValidationPipe, Headers } from "@nestjs/common";
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { ShortlinkDto } from '@app/modules/shortlink/dto/shortlink.dto';
@@ -21,12 +21,13 @@ export class ShortlinkController {
     async Shortlink(
         @Body() body: ShortlinkDto,
         @Res() response: Response,
+        @Headers() headers: Headers,
     ): Promise<Response<ShortlinkEntity>> {
         const data: ShortlinkEntity = {
             error: 0,
             data: {},
         }
-        const res = await this.shortlinkService.Shortlink(body, data);
+        const res = await this.shortlinkService.Shortlink(body, headers, data);
         return response.json(res);
     }
 }

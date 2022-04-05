@@ -35,7 +35,7 @@ const addAppNameFormat = winston.format((info: any) => {
 const elasticOptions = new ElasticsearchTransport(esTransportOpts);
 
 export const AppLogger = WinstonModule.createLogger({
-    transports: elasticOptions,
+    // transports: elasticOptions,
     exitOnError: false,
     format: winston.format.combine(
         addAppNameFormat(),

@@ -6,7 +6,15 @@ export class ShortlinkDto {
     @IsString()
     @ApiProperty({
         type: String,
-        default: 'http://localhost:3000/shortlink/?param1&param2',
+        default: 'http://localhost.ru/shortlink/?param1&param2',
     })
-    readonly url: string;
+    readonly fullUrl: string;
+
+    @IsNotEmpty()
+    @IsString()
+    @ApiProperty({
+        type: String,
+        default: 'http://localhost.ru/',
+    })
+    readonly baseUrl: string;
 }
