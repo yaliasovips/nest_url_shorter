@@ -71,3 +71,10 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+[//]: # ("@elastic/elasticsearch": "^8.1.0",)
+[//]: # ("@nestjs/elasticsearch": "^8.1.0",)
+[//]: # ("elasticsearch": "^16.7.3",)
+[//]: # ("winston": "^3.7.2",)
+[//]: # ("winston-elasticsearch": "^0.16.1")

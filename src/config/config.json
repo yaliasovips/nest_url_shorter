@@ -1,0 +1,28 @@
+{
+  "elastic": {
+    "hosts":  ["https://es.egopay.ru/"],
+    "index": "shortlink_test"
+  },
+  "auth": {
+    "host": "https://test.egopay.ru/users"
+  },
+  "logger": {
+    "log": "info"
+  },
+  "orderv2": {
+    "host": "https://test.egopay.ru/order/v2/.wsdl"
+  },
+  "demo": {
+    "paymentUrl": "https://test.egopay.ru/payments/test/card/test"
+  },
+  "coreSettings": {
+    "host":  "coresettings",
+    "url": "http://10.1.100.189:7011/.wsdl"
+  },
+  "riak": {
+    "host": "10.1.100.189",
+    "port": 8342,
+    "bucket": "sendlink",
+    "secret": "somesecret"
+  }
+}
