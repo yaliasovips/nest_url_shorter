@@ -1,4 +1,4 @@
-import { Body, Headers, Injectable } from "@nestjs/common";
+import { Body, Headers, Injectable, Param } from "@nestjs/common";
 import { ShortlinkDto } from '@app/modules/shortlink/dto/shortlink.dto';
 import { ShortlinkEntity } from '@app/modules/shortlink/entities/shortlink.entity';
 import { urlValidate } from '@app/utils/urlValidate';
@@ -8,12 +8,13 @@ import * as shortid from 'shortid';
 @Injectable()
 export class ShortlinkService {
     constructor() {}
-    async Shortlink(
-        @Body() body: ShortlinkDto,
-        @Headers() headers: Headers,
+    async GenerateShortlink(
+        body: ShortlinkDto,
+        headers: Headers,
         res: ShortlinkEntity,
     ): Promise<ShortlinkEntity> {
-        const { fullUrl, baseUrl } = body;
+        const { fullUrl } = body;
+        const baseUrl = fullUrl.slice(0, fullUrl.lastIndexOf('/shortlink/') + 11);
         const shortID = shortid.generate();
         if(urlValidate(fullUrl)) {
             // TODO проверка в базе короткого урла
@@ -21,7 +22,6 @@ export class ShortlinkService {
             try {
                 const shortUrl = baseUrl + shortID;
                 res.data.url = shortUrl;
-
                 AppLogger.log('Successful send url', {
                     request_name: '/shortlink/',
                     request_body: body,
@@ -62,6 +62,21 @@ export class ShortlinkService {
             });
 
             res.error = 400;
+            return res;
+        }
+    }
+
+    async RedirectToFullUrl(
+        params: { id: string },
+        headers: Headers,
+        res: ShortlinkEntity,
+    ): Promise<ShortlinkEntity> {
+        try {
+            const shortID = params.id;
+            //TODO запрос на бд на поиск нужного ключа
+            return res;
+        } catch(error) {
+            res.error = 404;
             return res;
         }
     }

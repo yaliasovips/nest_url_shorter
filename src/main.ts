@@ -8,8 +8,8 @@ import { AppLogger } from "@app/modules/logger/Logger";
 async function NestUrlShorter() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule, {
         cors: true,
-        // logger: AppLogger,
-        logger: ['log', 'warn']
+        logger: AppLogger,
+        // logger: ['log', 'warn']
     });
 
     app.enableCors({
